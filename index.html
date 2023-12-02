@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="style.css">
+      <title>Busca de Endereço por CEP</title>
+   </head>
+
+   <header id="cabecalho">
+      <hgroup>
+          <h1>Busca de Endereço por CEP</h1>
+      </hgroup>
+  </header>
+
+   <body>
+      <div id="interface">
+         <img id="icone" src="imagens\GoogleMaps.png" alt="Image" height="250" width="250">
+         <p>Digite o CEP que deseja efeutar a busca do endereço:</p>
+         <input type="text" id="cep" name="cep">
+         <!--Botão Buscar chama a função buscarCep que chama a URL (nossa API)-->
+         <button type="button" onclick="buscarCep()">Buscar</button><br><br>
+         <label>Cep:</label>
+         <label id="textoCep"></label><br>
+         <label>Logradouro:</label>
+         <label id="logradouro"></label><br>
+         <label>Complemento:</label>
+         <label id="complemento"></label><br>
+         <label>Bairro:</label>
+         <label id="bairro"></label><br>
+         <label>Localidade:</label>
+         <label id="localidade"></label><br>
+         <label>UF:</label>
+         <label id="uf"></label><br>
+         <label>IBGE:</label>
+         <label id="ibge"></label><br>
+         <label>DDD:</label>
+         <label id="ddd"></label><br>
+         <!--abaixo dentro das tags scripts tem os chamados da API e da função que salva os dados da pesquisa em aquivo texto-->
+         <script src="buscaCep.js"></script>
+         <script src="funcoes.js"></script>
+         <button id="botaoSalvar" onclick="salvarResultado()">Salvar Dados da Pesquisa</button>
+         <script>                                         
+            salvarResultado;
+         </script>
+      </div>
+   </body>
+</html>

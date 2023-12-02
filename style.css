@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+body {
+ background-color: rgb(238, 242, 243);
+ color:darkslategray;
+}
+
+div#interface {
+  width: 1200px;
+  background-color: aliceblue;
+  margin: 5px auto 5px auto;
+  box-shadow: 0px 0px 10px rgb(128, 150, 150);
+  padding: 10px;
+}
+
+img#icone {
+  position: absolute;
+  left: 1050px ;
+  top: 190px;
+  max-width: 100%;
+  height: auto;
+}
+
+header#cabecalho {
+  /*border-bottom: 1px #606060 solid;*/
+  height: 60px;
+  /*background: url("../Projeto_Busca_CEP/imagens/Fundo.jpg") no-repeat;*/
+  }
+
+  header#cabecalho h1 {
+    font-family: Arial, sans-serif;
+    font-size: 30px;
+    color:midnightblue;
+    text-shadow: 1px 1px 1px 1px rgb(128, 150, 150);
+  }
+
+
+
+ 
