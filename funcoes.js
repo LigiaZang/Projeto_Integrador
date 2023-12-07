@@ -13,7 +13,7 @@ function persistirDadosTXT() {
   return resultadodapesquisa;
 }
 
-function salvarResultado() {
+async function salvarResultado() {
   // Criar um arquivo de texto com os dados capturados na função persistirDadosTXT
   var blob = new Blob([persistirDadosTXT()], { type: 'text/plain' });
     
@@ -30,4 +30,35 @@ function salvarResultado() {
     
   // Remover o link do documento
   document.body.removeChild(link);
+
+  try {
+    console.log('SEND API');
+
+    // SEND TO API
+    const data = {
+      cep: document.getElementById("textoCep").innerText,
+      logradouro: document.getElementById("logradouro").innerText,
+      complemento: document.getElementById("complemento").innerText,
+      bairro: document.getElementById("bairro").innerText,
+      localidade: document.getElementById("localidade").innerText,
+      uf: document.getElementById("uf").innerText,
+      ibge: document.getElementById("ibge").innerText,
+      ddd: document.getElementById("ddd").innerText,
+    };
+
+    console.log('DATA', data);
+
+    const response = await fetch('http://localhost:3000/enderecos', {
+      method: "POST",
+      mode: 'no-cors',
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: {
+        ...data
+      },
+    });
+  } catch (e) {
+    console.error(e);
+  }
 }
