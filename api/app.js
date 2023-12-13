@@ -1,9 +1,10 @@
 // app.js
+// Grava dados do JSON no Banco
 
 const express = require("express");
 const bodyParser = require("body-parser");
 const { Client } = require("pg");
-const cors = require('cors')
+const cors = require("cors");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -11,27 +12,28 @@ const PORT = process.env.PORT || 3000;
 app.use(bodyParser.json());
 app.use(cors());
 
-// Replace the following connection string with your PostgreSQL connection details
-const connectionString =
-  "postgresql://dah:era.a@localhost:5432/BUSCACEP";
+// Conexão de conexão com Banco de Dados:
+const connectionString = "postgresql://dah:era.a@192.168.0.174:5432/BUSCACEP";
 const client = new Client({
   connectionString: connectionString,
 });
 client.connect();
 
-// Define a route to insert data into the database
+// Recebe POST executa: 
 app.post("/enderecos", async (req, res) => {
   try {
     const { cep, logradouro, complemento, bairro, localidade, uf, ibge, ddd } =
       req.body;
-    
+
     console.log(req.body);
 
+    //Insert com os dados que recebeu acima no JSON no Banco de Dados:
     const result = await client.query(
       "INSERT INTO enderecos(cep, logradouro, complemento, bairro, localidade, uf, ibge, ddd) VALUES($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *",
       [cep, logradouro, complemento, bairro, localidade, uf, ibge, ddd]
     );
 
+    // Retorna no console o resultado da inserção
     const novoEndereco = result.rows[0];
     res.json(novoEndereco);
   } catch (error) {
