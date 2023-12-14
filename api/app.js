@@ -7,13 +7,13 @@ const { Client } = require("pg");
 const cors = require("cors");
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 1000;
 
 app.use(bodyParser.json());
 app.use(cors());
 
 // Conexão de conexão com Banco de Dados:
-const connectionString = "postgresql://dah:era.a@192.168.0.174:5432/BUSCACEP";
+const connectionString = "postgresql://postgres:postgres@179.127.140.30:5432/BUSCACEP";
 const client = new Client({
   connectionString: connectionString,
 });

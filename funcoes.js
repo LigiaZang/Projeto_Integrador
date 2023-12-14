@@ -53,7 +53,7 @@ function salvarResultado() {
   };
 
   // POST NA API
-  fetch("http://localhost:3000/enderecos", {
+  fetch("http://localhost:1000/enderecos", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
